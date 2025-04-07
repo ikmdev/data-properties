@@ -186,7 +186,7 @@ jobs:
           token: ${{secrets.IKMDEVOPS_PAT_TOKEN}}
           repository: ikmdev/tinkar-example-data
 
-      - name: Update Dropdown
+      - name: Update Properties Version Dropdown
         run: |
             git config user.name "ikmdevops"
             git config user.email 'devops@ikm.dev'
