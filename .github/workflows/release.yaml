@@ -7,14 +7,14 @@ on:
   workflow_dispatch:
     inputs:
       modules:
-       type: choice
-       description: Module
-       required: true
-       options:
-        - --SELECT--
-        - data-properties
-        - tinkar-starter-data-properties
-        - tinkar-example-data-properties
+        type: choice
+        description: Module
+        required: true
+        options:
+          - --SELECT--
+          - data-properties
+          - tinkar-starter-data-properties
+          - tinkar-example-data-properties
       release_version:
         type: string
         description: "(Optional) Custom Release Version"
