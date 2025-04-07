@@ -72,7 +72,6 @@ jobs:
 
       - name: Configure Version Type
         id: configure_version_type
-        shell: bash
         run: |
          if [ $RELEASE_TYPE == 'major' ]; then 
           echo "version_type=0" >> $GITHUB_OUTPUT
