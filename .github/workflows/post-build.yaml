@@ -102,6 +102,7 @@ jobs:
           output_file: .m2/settings.xml
 
       - name: Maven Build
+        if: steps.is_tag.outputs.IS_TAG == 'false' || steps.is_current_module.outputs.TAG_MATCH_MODULE == 'true'
         run: |
           mvn clean install\
             --batch-mode \
@@ -111,7 +112,7 @@ jobs:
             -Dmaven.build.cache.enabled=false \
             -PcodeQuality \
             -PgenerateData \
-             ${{  steps.is_tag.outputs.RELEASE_ENFORCEMENT  }}
+            ${{  steps.is_tag.outputs.RELEASE_ENFORCEMENT  }}
         working-directory: ${{matrix.module == 'data-properties' && '.' || matrix.module}}
 
       - name: Deploy To Nexus
