@@ -22,7 +22,7 @@ jobs:
         - name: "Update ${{github.event.client_payload.artifactID}} Version Property"
           run: |
             find . -name "pom.xml" -exec \
-            mvn versions:set-property -Dproperty=${{github.event.client_payload.artifactID}}version -DnewVersion=${{github.event.client_payload.version}} \
+            mvn versions:set-property -Dproperty=${{github.event.client_payload.artifactID}}.version -DnewVersion=${{github.event.client_payload.version}} \
             -f {} \;
 
         - name: Push to Default branch
@@ -31,7 +31,7 @@ jobs:
             git config user.email "devops@ikm.dev"
             git pull -p
             git add .
-            git commit -m"Changed ${{github.event.client_payload.artifactID}}version to ${{github.event.client_payload.version}}"
+            git commit -m"Changed ${{github.event.client_payload.artifactID}} version to ${{github.event.client_payload.version}}"
             git push
           
 
