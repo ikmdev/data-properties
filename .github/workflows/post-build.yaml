@@ -60,6 +60,7 @@ jobs:
         env:
           HEAD_BRANCH: ${{ env.BRANCH_NAME }}
 
+      # Ensures that the current module matches the tag being built
       - name: Check Tag & Current Module
         id: is_current_module
         if: steps.is_tag.outputs.IS_TAG == 'true'
@@ -78,6 +79,7 @@ jobs:
           TAG: ${{ env.BRANCH_NAME }}
         working-directory: ${{matrix.module == 'data-properties' && '.' || matrix.module}}
 
+      # Extract the version number from tag name
       - name: Extract Tag Version
         id: extract_tag_version
         if: steps.is_tag.outputs.IS_TAG == 'true'
@@ -87,7 +89,8 @@ jobs:
           echo "EXTRACTED_VERSION: $VERSION"
         env:
           TAG: ${{ env.BRANCH_NAME }}
-
+      
+      # Map the module being built to the appropriate downstream repository
       - name: Map Module To Appropriate Repo
         id: module_repo_map
         if: steps.is_tag.outputs.IS_TAG == 'true' && steps.is_current_module.outputs.TAG_MATCH_MODULE == 'true'
@@ -171,6 +174,7 @@ jobs:
            MAVEN_GPG_PASSPHRASE: ${{secrets.GPG_PASSPHRASE}}
         working-directory: ${{matrix.module == 'data-properties' && '.' || matrix.module}}
 
+      # Performs repository dispatch event call on the appropriate downstream repository
       - name: Repository Dispatch Call
         if: steps.is_tag.outputs.IS_TAG == 'true' && steps.is_current_module.outputs.TAG_MATCH_MODULE == 'true'
         run: |
