@@ -184,5 +184,3 @@ jobs:
           -H "Authorization: token ${{secrets.IKMDEVOPS_PAT_TOKEN}}" \
           https://api.github.com/repos/ikmdev/${{steps.module_repo_map.outputs.DISPATCH_REPO}}/dispatches \
           -d '{"event_type":"update-repository-dispatch-trigger","client_payload":{"version": "${{steps.extract_tag_version.outputs.EXTRACTED_VERSION}}"}}'
-        env:
-          TAG: ${{env.BRANCH_NAME}}
