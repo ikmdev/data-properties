@@ -12,7 +12,7 @@
 
     <groupId>dev.ikm.maven.snomedct</groupId>
     <artifactId>snomedct-data-properties</artifactId>
-    <version>${snomedct-release.qualifier}-${snomedct-release.date}-${timestamp-suffix}</version>
+    <version>${snomedct-release.date}-${snomedct-release.qualifier}-${timestamp-suffix}</version>
     <packaging>pom</packaging>
 
     <properties>
