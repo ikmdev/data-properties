@@ -11,7 +11,7 @@
 
     <groupId>dev.ikm.maven.tinkar</groupId>
     <artifactId>data-properties-parent</artifactId>
-    <version>1.3.0-SNAPSHOT</version>
+    <version>1.4.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <name>Data Properties Parent</name>
@@ -79,6 +79,10 @@
                         <gitFlowConfig>
                             <versionTagPrefix>${project.artifactId}-v</versionTagPrefix>
                         </gitFlowConfig>
+                        <commitMessages>
+                            <releaseStartMessage>Update release version for ${project.artifactId}: @{version}</releaseStartMessage>
+                            <releaseFinishMessage>Set new development version for ${project.artifactId}</releaseFinishMessage>
+                        </commitMessages>
                     </configuration>
                 </plugin>
             </plugins>
