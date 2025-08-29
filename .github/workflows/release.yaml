@@ -45,15 +45,16 @@ jobs:
         with:
           token: ${{secrets.IKMDEVOPS_PAT_TOKEN}}
   
+
       - name: Shared Release Action (semantic versioning)
-        uses: ikmdev/maven-semver-release-action@v2.6.0
+        uses: ikmdev/maven-semver-release-action@v2.7.0
         if: ${{ env.TIMESTAMP_VERSION != 'true' }}
         with:
           working_directory: ${{ env.MODULE }}
           github_token: ${{secrets.GITHUB_TOKEN}}
 
       - name: Shared Release Action (timestamp versioning)
-        uses: ikmdev/maven-semver-release-action@v2.6.0
+        uses: ikmdev/maven-semver-release-action@v2.7.0
         if: ${{ env.TIMESTAMP_VERSION == 'true' }}
         with:
           working_directory: ${{ env.MODULE }}
